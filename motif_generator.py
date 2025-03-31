@@ -1,4 +1,6 @@
 import turtle
+from PIL import Image
+import time
 
 def generer_motif(n_sides=4, taille=80, repetitions=10, angle=30, couleur="multi", option=["decroissant", "croissant","spiral"]):
     """
@@ -12,13 +14,17 @@ def generer_motif(n_sides=4, taille=80, repetitions=10, angle=30, couleur="multi
     - couleur : couleur du tracé
     """
     
-   
-    fenetre = turtle.Screen()
-    fenetre.bgcolor("white")  
-    
 
     arc_en_ciel = ["red", "orange", "yellow", "green", "blue", "indigo", "purple"]
+    filename = f"motif_{int(time.time())}.eps"
+    filepath_eps = f"static/{filename}"
+    filepath_png = filepath_eps.replace(".eps", ".png")
     
+    
+    
+    turtle.clearscreen()
+    fenetre = turtle.Screen()
+    fenetre.bgcolor("white")  
     
     t = turtle.Turtle()
     t.pensize(2)
@@ -55,9 +61,12 @@ def generer_motif(n_sides=4, taille=80, repetitions=10, angle=30, couleur="multi
                 t.pendown()                   
 
    
-    fenetre.exitonclick()
+    canvas = turtle.getcanvas()
+    canvas.postscript(file=filepath_eps)
     
     
-if __name__ == "__main__":
-    generer_motif(n_sides=4, taille=50, repetitions=75, angle=30, couleur="multi", option=["spiral","croissant"])
-
+    img = Image.open(filepath_eps)
+    img.save(filepath_png, "png")
+    
+    return filepath_png.split("/")[-1]
+    

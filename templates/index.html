@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Générateur de motifs</title>
 </head>
+
 <body>
     <h1>Générateur de motifs géométriques</h1>
     <form method="POST">
@@ -26,5 +28,14 @@
 
         <button type="submit">Générer</button>
     </form>
+
+    {% if image_url %}
+    <h2>Motif généré :</h2>
+    <img src="{{ url_for('static', filename=image_url) }}" alt="Motif généré">
+    {% endif %}
+
+
+
 </body>
+
 </html>
