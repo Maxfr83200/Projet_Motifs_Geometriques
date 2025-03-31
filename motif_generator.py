@@ -1,6 +1,6 @@
 import turtle
 
-def generer_motif(n_sides, taille, repetitions, angle, couleur):
+def generer_motif(n_sides=4, taille=80, repetitions=10, angle=30, couleur="multi", option=["decroissant", "croissant","spiral"]):
     """
     Dessine un motif géométrique répété.
     
@@ -17,24 +17,47 @@ def generer_motif(n_sides, taille, repetitions, angle, couleur):
     fenetre.bgcolor("white")  
     
 
+    arc_en_ciel = ["red", "orange", "yellow", "green", "blue", "indigo", "purple"]
     
-
+    
     t = turtle.Turtle()
-    t.color(couleur)
     t.pensize(2)
     t.speed(0)  # vitesse maximale
 
    
-    for _ in range(repetitions):
-        for _ in range(n_sides):          
-            t.forward(taille)
+    for i in range(repetitions):
+        for _ in range(n_sides): 
+            
+            
+            if couleur == "multi":
+                t.color(arc_en_ciel[i % 7]) # 7 est la taille de la liste arc en ciel
+            else:
+                t.color(couleur)  
+                
+                
+            
+            if "decroissant" in option:
+                t.forward(taille*(1 - i / repetitions))
+            elif "croissant" in option:
+                t.forward(taille*(i / repetitions))  
+            else:
+                t.forward(taille) 
+                
+                
+                
+            
             t.right(360 / n_sides)
-        t.right(angle)                   
+        t.right(angle)
+        
+        if "spiral" in option:
+                t.penup()
+                t.forward(4*i)
+                t.pendown()                   
 
    
     fenetre.exitonclick()
     
     
 if __name__ == "__main__":
-    generer_motif(n_sides=3, taille=80, repetitions=12, angle=30, couleur="red")
+    generer_motif(n_sides=4, taille=50, repetitions=75, angle=30, couleur="multi", option=["spiral","croissant"])
 
