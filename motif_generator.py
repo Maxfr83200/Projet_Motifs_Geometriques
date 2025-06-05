@@ -1,5 +1,6 @@
 import turtle
 from PIL import Image
+import os
 import time
 
 def generer_motif(n_sides=4, taille=80, repetitions=10, angle=30, couleur="multi", option=["decroissant", "croissant","spiral"]):
@@ -13,12 +14,9 @@ def generer_motif(n_sides=4, taille=80, repetitions=10, angle=30, couleur="multi
     - angle : angle entre chaque motif
     - couleur : couleur du tracé
     """
-    
+    turtle.TurtleScreen._RUNNING = True  # évite "main loop" bug
 
     arc_en_ciel = ["red", "orange", "yellow", "green", "blue", "indigo", "purple"]
-    filename = f"motif_{int(time.time())}.eps"
-    filepath_eps = f"static/{filename}"
-    filepath_png = filepath_eps.replace(".eps", ".png")
     
     
     
@@ -61,12 +59,27 @@ def generer_motif(n_sides=4, taille=80, repetitions=10, angle=30, couleur="multi
                 t.pendown()                   
 
    
-    canvas = turtle.getcanvas()
-    canvas.postscript(file=filepath_eps)
     
+
+    eps_path = f"static/images/motif.eps"
+    canvas = fenetre.getcanvas()
+    canvas.postscript(file=eps_path)
+
+    turtle.bye()
+
+    time.sleep(0.5)      # Attendre que l’EPS soit disponible (Windows a besoin d’une pause sinon bug)
+
+
+   
+    png_path = f"motif.png"
+    full_png_path = f"static/images/{png_path}"
+
+    img = Image.open(eps_path)
+    img.save(full_png_path, 'png')
+
     
-    img = Image.open(filepath_eps)
-    img.save(filepath_png, "png")
+    os.remove(eps_path)  # Supprimer le fichier EPS temporaire
+
+    return png_path
     
-    return filepath_png.split("/")[-1]
     

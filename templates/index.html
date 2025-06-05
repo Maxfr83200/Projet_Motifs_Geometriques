@@ -31,7 +31,8 @@
 
     {% if image_url %}
     <h2>Motif généré :</h2>
-    <img src="{{ url_for('static', filename=image_url) }}" alt="Motif généré">
+    <img src="{{ url_for('static', filename='images/' + image_filename) }}" alt="Motif généré">
+
     {% endif %}
 
 
