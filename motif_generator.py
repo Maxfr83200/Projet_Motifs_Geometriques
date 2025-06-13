@@ -61,21 +61,25 @@ def generer_motif(n_sides=4, taille=80, repetitions=10, angle=30, couleur="multi
    
     
 
-    eps_path = f"static/images/motif.eps"
+    eps_path = "static/images/motif.eps"
+    png_path = "static/images/motif.png"
+    
+    
     canvas = fenetre.getcanvas()
     canvas.postscript(file=eps_path)
 
     turtle.bye()
 
-    time.sleep(0.5)      # Attendre que l’EPS soit disponible (Windows a besoin d’une pause sinon bug)
+    time.sleep(1)      # Attendre que l’EPS soit disponible (Windows a besoin d’une pause sinon bug)
 
 
-   
-    png_path = f"motif.png"
-    full_png_path = f"static/images/{png_path}"
 
-    img = Image.open(eps_path)
-    img.save(full_png_path, 'png')
+    try:
+        with Image.open(eps_path) as img:
+            img.save(png_path)
+    except Exception as e:
+        print(f"Erreur lors de la conversion EPS -> PNG : {e}")
+        return None
 
     
     os.remove(eps_path)  # Supprimer le fichier EPS temporaire

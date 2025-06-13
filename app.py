@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for
 from motif_generator import generer_motif
+import time
 
 app = Flask(__name__)
 
@@ -21,7 +22,7 @@ def index():
         except Exception as e:
             
             print("Erreur lors de la génération :", e)
-    return render_template("index.html", image_filename=image_filename)
+    return render_template('index.html', image_filename=image_filename, timestamp=time.time())
 
 
 if __name__ == "__main__":

@@ -1,0 +1,69 @@
+# Projet Motifs Géométriques
+
+Ce projet permet de générer des motifs géométriques via une interface web construite avec Flask, et de les sauvegarder au format image.
+
+---
+
+## Prérequis
+
+- Python 3.8 ou plus
+- pip (installé avec Python)
+- Accès à Internet (pour installer les bibliothèques)
+- Ghostscript (pour enregistrer certaines images)
+
+---
+
+## Installation des dépendances
+
+Ouvre un terminal, place-toi dans le dossier du projet, puis exécute :
+
+```bash
+pip install flask pillow
+```
+
+---
+
+## Installation de Ghostscript (Windows)
+
+1. Va sur le site officiel :  
+    [https://ghostscript.com/download/gsdnld.html](https://ghostscript.com/download/gsdnld.html)
+
+2. Télécharge et installe la version **Windows 64-bit** :
+
+
+## Lancer l'application
+
+Toujours dans le terminal (dans le dossier du projet) :
+
+```bash
+python app.py
+```
+
+Puis ouvre ton navigateur et rends-toi à l’adresse suivante :
+
+```
+http://127.0.0.1:5000/
+```
+
+---
+
+## Arborescence typique
+
+```
+Projet_Motifs_Geometriques-main/
+│
+├── app.py
+├── motif_generator.py
+├── static/
+│   └── images
+│       └── motif.png
+│       └── motif.eps
+├── templates/
+│   └── index.html
+└── README.md
+```
+
+
+## Auteur
+
+Maxence Mounier – ISEN Toulon
