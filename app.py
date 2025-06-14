@@ -16,8 +16,15 @@ def index():
             repetitions = int(request.form["repetitions"])
             angle = float(request.form["angle"])
             couleur = request.form["couleur"]
-            options_str = request.form["options"]
-            options = [opt.strip() for opt in options_str.split(",") if opt.strip()]
+            
+            
+            style = request.form.get("style", "normal")  # valeur par défaut : normal
+            spirale = "spirale" in request.form  # True si coché
+            
+            options = [style]
+            if spirale:
+                options.append("spirale")
+            
             image_filename = generer_motif(n_sides, taille, repetitions, angle, couleur, options)
         except Exception as e:
             

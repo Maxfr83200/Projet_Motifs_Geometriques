@@ -3,37 +3,85 @@
 
 <head>
     <title>Générateur de motifs</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+
 </head>
 
 <body>
     <h1>Générateur de motifs géométriques</h1>
-    <form method="POST">
-        <label>Nombre de côtés :</label>
-        <input type="number" name="n_sides"><br>
+    <div class="main-container">
+        <div class="form-container">
+            <form method="POST">
+                <div class="form-split">
+                    <!-- Partie gauche : entrées -->
+                    <div class="form-left">
+                        <h3>Informations :</h3>
+                        <label>Nombre de côtés :</label>
+                        <input type="number" name="n_sides"><br>
 
-        <label>Taille :</label>
-        <input type="number" name="taille"><br>
+                        <label>Taille :</label>
+                        <input type="number" name="taille"><br>
 
-        <label>Répétitions :</label>
-        <input type="number" name="repetitions"><br>
+                        <label>Répétitions :</label>
+                        <input type="number" name="repetitions"><br>
 
-        <label>Angle :</label>
-        <input type="number" name="angle"><br>
+                        <label>Angle :</label>
+                        <input type="number" name="angle"><br>
 
-        <label>Couleur :</label>
-        <input type="text" name="couleur"><br>
+                        <label for="couleur">Couleur :</label>
+                        <select id="couleur" name="couleur">
+                            <option value="red">Rouge</option>
+                            <option value="blue">Bleu</option>
+                            <option value="green">Vert</option>
+                            <option value="yellow">Jaune</option>
+                            <option value="black">Noir</option>
+                            <option value="purple">Violet</option>
+                            <option value="orange">Orange</option>
+                            <option value="pink">Rose</option>
+                            <option value="brown">Marron</option>
+                            <option value="gray">Gris</option>
+                            <option value="multi">Arc en Ciel</option>
+                        </select><br>
+                    </div>
 
-        <label>Options (séparées par des virgules) :</label>
-        <input type="text" name="options"><br>
+                    <!-- Partie droite : options -->
+                    <div class="form-right">
 
-        <button type="submit">Générer</button>
-    </form>
+                        <h3>Option :</h3>
 
-    {% if image_filename %}
-    <h2>Motif généré :</h2>
-    <img src="static/images/motif.png" alt="Motif généré"
-        width="400">
-    {% endif %}
+                        <input type="radio" id="decroissant" name="style" value="decroissant">
+                        <label for="decroissant">Décroissant</label><br>
+
+                        <input type="radio" id="normal" name="style" value="normal" checked>
+                        <label for="normal">Normal</label><br>
+
+                        <input type="radio" id="croissant" name="style" value="croissant">
+                        <label for="croissant">Croissant</label><br>
+
+
+
+                        <br>
+
+                        <input type="checkbox" id="spirale" name="spirale">
+                        <label for="spirale">Spirale</label><br>
+                    </div>
+                </div>
+
+                <br>
+
+                <input type="submit" value="Générer">
+            </form>
+
+        </div>
+
+        <div class="image-container">
+
+            {% if image_filename %}
+            <h2>Motif généré :</h2>
+            <img src="static/images/motif.png" alt="Motif généré" width="400">
+            {% endif %}
+        </div>
+    </div>
 
 
 
