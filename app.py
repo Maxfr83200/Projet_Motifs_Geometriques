@@ -18,12 +18,15 @@ def index():
             couleur = request.form["couleur"]
             
             
-            style = request.form.get("style", "normal")  # valeur par défaut : normal
-            spirale = "spirale" in request.form  # True si coché
+            style = request.form.get("style", "normal")  
             
             options = [style]
-            if spirale:
+            if "spirale" in request.form:
                 options.append("spirale")
+            if "miroir" in request.form:
+                options.append("miroir")
+            if "coins" in request.form:
+                options.append("coins")
             
             image_filename = generer_motif(n_sides, taille, repetitions, angle, couleur, options)
         except Exception as e:

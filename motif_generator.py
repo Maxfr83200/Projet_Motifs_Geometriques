@@ -3,32 +3,10 @@ from PIL import Image
 import os
 import time
 
-def generer_motif(n_sides=4, taille=80, repetitions=10, angle=30, couleur="multi", option=["decroissant", "croissant","spiral"]):
-    """
-    Dessine un motif géométrique répété.
+def figure(n_sides, taille, repetitions, angle, couleur, option, t):
     
-    Paramètres :
-    - n_sides : nombre de côtés du polygone 
-    - taille : longueur de chaque côté
-    - repetitions : combien de fois on répète le motif en tournant
-    - angle : angle entre chaque motif
-    - couleur : couleur du tracé
-    """
-    turtle.TurtleScreen._RUNNING = True  # évite "main loop" bug
-
     arc_en_ciel = ["red", "orange", "yellow", "green", "blue", "indigo", "purple"]
     
-    
-    
-    turtle.clearscreen()
-    fenetre = turtle.Screen()
-    fenetre.bgcolor("white")  
-    
-    t = turtle.Turtle()
-    t.pensize(2)
-    t.speed(0)  # vitesse maximale
-
-   
     for i in range(repetitions):
         for _ in range(n_sides): 
             
@@ -46,17 +24,74 @@ def generer_motif(n_sides=4, taille=80, repetitions=10, angle=30, couleur="multi
                 t.forward(taille*(i / repetitions))  
             else:
                 t.forward(taille) 
-                
-                
-                
+                 
             
             t.right(360 / n_sides)
         t.right(angle)
         
-        if "spiral" in option:
+        if "spirale" in option:
+            t.penup()
+            t.forward(4*i)
+            t.pendown()
+            
+    
+        
+            
+
+def dessiner_depuis_position(x, y, t):
+    t.penup()
+    t.goto(x, y)
+    t.setheading(0)
+    t.pendown()
+    
+    
+    
+
+def generer_motif(n_sides, taille, repetitions, angle, couleur, option):
+
+    turtle.TurtleScreen._RUNNING = True 
+
+    
+    
+    
+    
+    turtle.clearscreen()
+    fenetre = turtle.Screen()
+    fenetre.bgcolor("white")  
+    
+    t = turtle.Turtle()
+    t.pensize(2)
+    t.speed(0)  # vitesse maximale
+    print(turtle.window_width(), turtle.window_height())
+    
+    
+    if "coins" in option:
+        positions = [(-480, 405), (480, 405), (-480, -405), (480, -405)]
+        for pos in positions:
+            dessiner_depuis_position(*pos, t)
+            figure(n_sides, taille, repetitions, angle, couleur, option, t)
+            if "miroir" in option:
+                dessiner_depuis_position(*pos, t)
+                t.right(180) 
+                t.pendown() 
+                figure(n_sides, taille, repetitions, angle, couleur, option, t)
+            
+        
+    else:
+        figure(n_sides, taille, repetitions, angle, couleur, option, t)
+        if "miroir" in option:
                 t.penup()
-                t.forward(4*i)
-                t.pendown()                   
+                t.home()
+                t.right(180) 
+                t.pendown() 
+                figure(n_sides, taille, repetitions, angle, couleur, option, t)
+    
+    
+
+
+                
+    
+                         
 
    
     
