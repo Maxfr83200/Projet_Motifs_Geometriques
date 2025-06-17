@@ -22,6 +22,17 @@ body {
     border-left: 1px solid #ccc;
 }
 
+.option-label {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.option-text {
+    position: relative;
+    bottom: 2px; 
+}
+
 .main-container {
     display: flex;
     justify-content: flex-start;
@@ -33,18 +44,24 @@ body {
 /* Bloc formulaire */
 .form-container {
     flex: 0 0 auto;
+    position: relative;
+    top: 25px;
+    right: -25px;
 }
 
 /* Bloc image */
 .image-container {
     flex: 1;
     text-align: center;
+    position: relative;
+    top: -10px;
 }
 
 
 h1, h2, h3 {
     color: #444;
     text-align: center;
+    
 }
 
 form {
@@ -100,7 +117,7 @@ input[type="submit"]:hover {
 img {
     display: block;
     margin: 20px auto;
-    max-width: 100%;
+    width: 700px;
     border: 2px solid #ccc;
     border-radius: 8px;
 }

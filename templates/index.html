@@ -8,7 +8,9 @@
 </head>
 
 <body>
+    
     <h1>Générateur de motifs géométriques</h1>
+    <br><br>
     <div class="main-container">
         <div class="form-container">
             <form method="POST">
@@ -17,16 +19,16 @@
                     <div class="form-left">
                         <h3>Informations :</h3>
                         <label>Nombre de côtés :</label>
-                        <input type="number" name="n_sides"><br>
+                        <input type="number" name="n_sides" min="3" max="10" required><br>
 
                         <label>Taille :</label>
-                        <input type="number" name="taille"><br>
+                        <input type="number" name="taille" min="1" max="500" required><br>
 
                         <label>Répétitions :</label>
-                        <input type="number" name="repetitions"><br>
+                        <input type="number" name="repetitions" min="1" max="100" required><br>
 
                         <label>Angle :</label>
-                        <input type="number" name="angle"><br>
+                        <input type="number" name="angle" min="0" max="260" required><br>
 
                         <label for="couleur">Couleur :</label>
                         <select id="couleur" name="couleur">
@@ -46,24 +48,27 @@
 
                     <!-- Partie droite : options -->
                     <div class="form-right">
+                        <h3>Style :</h3>
 
-                        <h3>Option :</h3>
+                        <label class="option-label">
+                            <input type="radio" name="style" value="croissant">
+                            <span class="option-text">Croissant</span>
+                        </label><br>
 
-                        <input type="radio" id="decroissant" name="style" value="decroissant">
-                        <label for="decroissant">Décroissant</label><br>
+                        <label class="option-label">
+                            <input type="radio" name="style" value="normal" checked>
+                            <span class="option-text">Normal</span>
+                        </label><br>
 
-                        <input type="radio" id="normal" name="style" value="normal" checked>
-                        <label for="normal">Normal</label><br>
+                        <label class="option-label">
+                            <input type="radio" name="style" value="decroissant">
+                            <span class="option-text">Décroissant</span>
+                        </label><br><br>
 
-                        <input type="radio" id="croissant" name="style" value="croissant">
-                        <label for="croissant">Croissant</label><br>
-
-
-
-                        <br>
-
-                        <input type="checkbox" id="spirale" name="spirale">
-                        <label for="spirale">Spirale</label><br>
+                        <label class="option-label">
+                            <input type="checkbox" name="spirale">
+                            <span class="option-text">Spirale</span>
+                        </label>
                     </div>
                 </div>
 
@@ -77,7 +82,6 @@
         <div class="image-container">
 
             {% if image_filename %}
-            <h2>Motif généré :</h2>
             <img src="static/images/motif.png" alt="Motif généré" width="400">
             {% endif %}
         </div>
