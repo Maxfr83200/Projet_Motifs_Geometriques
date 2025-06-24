@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for
 from motif_generator import generer_motif
 import time
+import os
 
 app = Flask(__name__)
 
@@ -29,9 +30,15 @@ def index():
                 options.append("coins")
             
             image_filename = generer_motif(n_sides, taille, repetitions, angle, couleur, options)
-        except Exception as e:
+        except Exception as e:   
+            print("Erreur lors de la génération :", e)  
+               
+    else:  # Méthode GET → supprimer motif.png s'il existe
+        motif_path = "static/images/motif.png"
+        if os.path.exists(motif_path):
+            os.remove(motif_path)
             
-            print("Erreur lors de la génération :", e)
+            
     return render_template('index.html', image_filename=image_filename, timestamp=time.time())
 
 

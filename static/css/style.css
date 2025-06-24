@@ -30,15 +30,17 @@ body {
 
 .option-text {
     position: relative;
-    bottom: 2px; 
+    bottom: 2px;
 }
 
 .main-container {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 40px;
-    padding: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Bloc formulaire */
@@ -57,11 +59,34 @@ body {
     top: -10px;
 }
 
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
 
-h1, h2, h3 {
+.form-group label {
+    flex: 1;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    flex: 1;
+    padding: 8px;
+    margin-left: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+
+h1,
+h2,
+h3 {
     color: #444;
     text-align: center;
-    
+
 }
 
 form {
@@ -72,29 +97,10 @@ form {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-}
 
-input[type="number"]{
-    width: 15%;
-    padding: 8px;
-    margin-top: 4px;
-    margin-bottom: 12px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
 
-select {
-    width: 45%;
-    padding: 8px;
-    margin-top: 4px;
-    margin-bottom: 12px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
+
+
 
 
 
@@ -120,4 +126,58 @@ img {
     width: 700px;
     border: 2px solid #ccc;
     border-radius: 8px;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        align-items: stretch;
+        
+    }
+
+
+    .form-container {
+        flex: 0 0 auto;
+        position: relative;
+        top: 25px;
+        right: 20px;
+        
+    }
+
+
+    .image-container {
+        width: 100%;
+        max-width: 100%;
+        flex: none;
+        position: static;
+        /* annule le positionnement relatif */
+        top: auto;
+        /* annule les décalages */
+        right: auto;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        margin-top: 20px;
+        top: 0;
+    }
+
+
+    form {
+        width: 100%;
+    }
+
+
+
+
+
 }
