@@ -66,7 +66,7 @@ def generer_motif(n_sides, taille, repetitions, angle, couleur, option):
     
     
     if "coins" in option:
-        positions = [(-480, 405), (480, 405), (-480, -405), (480, -405)]
+        positions = [(-480, 405), (480, 405), (-480, -405), (480, -405)] # position des coins de la fenêtre
         for pos in positions:
             dessiner_depuis_position(*pos, t)
             figure(n_sides, taille, repetitions, angle, couleur, option, t)
@@ -105,7 +105,7 @@ def generer_motif(n_sides, taille, repetitions, angle, couleur, option):
 
     turtle.bye()
 
-    time.sleep(1)      # Attendre que l’EPS soit disponible (Windows a besoin d’une pause sinon bug)
+    time.sleep(1)      # Attendre que l’EPS soit disponible sinon bug
 
 
 

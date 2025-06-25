@@ -15,7 +15,7 @@ Ce projet permet de générer des motifs géométriques via une interface web co
 
 ## Installation des dépendances
 
-Ouvre un terminal, place-toi dans le dossier du projet, puis exécute :
+Ouvrir un terminal, se placer dans le dossier du projet, puis exécuter :
 
 ```bash
 pip install flask pillow
@@ -25,21 +25,21 @@ pip install flask pillow
 
 ## Installation de Ghostscript (Windows)
 
-1. Va sur le site officiel :  
+1. Aller sur le site officiel :  
     [https://ghostscript.com/download/gsdnld.html](https://ghostscript.com/download/gsdnld.html)
 
-2. Télécharge et installe la version **Windows 64-bit** :
+2. Télécharger et installer la version **Windows 64-bit** :
 
 
 ## Lancer l'application
 
-Toujours dans le terminal (dans le dossier du projet) :
+Toujours dans le terminal:
 
 ```bash
 python app.py
 ```
 
-Puis ouvre ton navigateur et rends-toi à l’adresse suivante :
+Puis ouvrir le navigateur et se rendre à l’adresse suivante :
 
 ```
 http://127.0.0.1:5000/
@@ -55,9 +55,10 @@ Projet_Motifs_Geometriques-main/
 ├── app.py
 ├── motif_generator.py
 ├── static/
-│   └── images
-│       └── motif.png
-│       └── motif.eps
+│   ├── images/
+│   │  └── motif.png
+│   └── css/
+│      └── style.css
 ├── templates/
 │   └── index.html
 └── README.md

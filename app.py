@@ -10,6 +10,7 @@ def index():
     
     image_filename = None
     
+    # Traitement du formulaire envoyé par l'utilisateur
     if request.method == "POST":
         try:
             n_sides = int(request.form["n_sides"])
@@ -29,6 +30,7 @@ def index():
             if "coins" in request.form:
                 options.append("coins")
             
+            # Génération du motif et récupération du nom du fichier image
             image_filename = generer_motif(n_sides, taille, repetitions, angle, couleur, options)
         except Exception as e:   
             print("Erreur lors de la génération :", e)  
@@ -38,9 +40,10 @@ def index():
         if os.path.exists(motif_path):
             os.remove(motif_path)
             
-            
+    # Si le motif a été généré, on passe le nom du fichier à la template# Affichage de la page avec le nom de l'image générée (ou None) et un timestamp pour éviter le cache navigateur   
     return render_template('index.html', image_filename=image_filename, timestamp=time.time())
 
 
 if __name__ == "__main__":
+    # Lancement de l'application Flask en mode debug
     app.run(debug=True)
